@@ -14,9 +14,12 @@
 // giphy API key = KTMIjgy5hDhnLeBJkjhiTFLRBcNzo99s
 //giphy api url = api.giphy.com/v1/gifs/searchs
 
+$(document).ready(function(){
+//array of button/search terms
 var buttons = ["dog", "cat"];
 
-    $("button").on("click", function() {
+//ajax call
+    $(document).on("click", "button", function() {
         var key = "KTMIjgy5hDhnLeBJkjhiTFLRBcNzo99s";
         var animal = $(this).attr("data-animal");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
@@ -98,4 +101,4 @@ $(".add-gif").on("click", function(event) {
 
 renderButtons();
 
-
+});

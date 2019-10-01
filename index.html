@@ -11,21 +11,26 @@
 </head>
 <body>
 
+<div class="jumbotron jumbotron-fluid text-center"><h1>Welcome to GIFtastic!</h1></div>
+
 <!--holds everything-->
 <div class="container">
     <!--holds buttons for gifs-->
-    <div class="gif-buttons"></div>
+    <div class="gif-buttons d-flex flex-wrap justify-content-center"></div>
     <!--input form to add more gifs-->
     <form>
     <div class="input-group mt-5">
-        <input type="text" class="form-control" id="search" placeholder="Add GIFs" aria-label="Add GIFs" aria-describedby="button-addon2">
+        <input type="text" class="form-control" id="search" placeholder="Search GIFs" aria-label="Search GIFs" aria-describedby="button-addon2">
         <div class="input-group-append">
             <button class="btn btn-primary" id="submit" type="button">Submit</button>
         </div>
     </div>
-    </form>     
+    </form>  
+    
+    <hr class="m-5">
+
     <!--holds images-->
-    <div id="gif-container"></div>
+    <div class="justify-content-center d-flex flex-wrap" id="gif-container"></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

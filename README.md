@@ -1,6 +1,6 @@
 <h3>GIFTASTIC<h3/>
 <hr>
-<p>A dynamic web application, built using Javascript and JQuery, that populates the pages with gifs from giphy, using an API. Use the search bar or click a button to populate the page with gifs. Watch the gifs in action by clicking on them.<p>
+A dynamic web application, built using Javascript and JQuery, that populates the pages with gifs from giphy, using an API. Use the search bar or click a button to populate the page with gifs. Watch the gifs in action by clicking on them.
 <br>
 <h3>Link to live site</h3>
 <hr>
@@ -8,4 +8,4 @@
 <br>
 <h5>Languages & Technologies Used</h5>
 <hr>
-<p>HTML, CSS, API, Javascript, JQuery
+HTML, CSS, API, Javascript, JQuery

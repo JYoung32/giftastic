@@ -57,7 +57,7 @@ $("#submit").on("click", function (event) {
   var value = $("#search").val();
 
   if(buttons.includes(value)){
-    alert("You have already searched this")
+    alert("You have already searched this");
 
     ajaxCall(value);
 

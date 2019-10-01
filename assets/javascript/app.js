@@ -39,14 +39,15 @@ function renderButtons() {
 
 renderButtons();
 
-$(".button-search").on("click", function () {
+$(document).on("click", ".button-search",  function () {
   var value = $(this).attr("data-name");
 
   console.log(value);
   console.log("clicked");
+  console.log(this);
 
   $("#gif-container").empty();
-  ajaxCall();
+  ajaxCall($(this).attr("data-name"));
 });
 
 $("#submit").on("click", function (event) {
@@ -60,16 +61,15 @@ $("#submit").on("click", function (event) {
 
   $("#gif-container").empty();
 
-  ajaxCall();
+  ajaxCall($("#search").val());
 
   console.log(value);
 })
 
 //ajax call function
 
-function ajaxCall() {
+function ajaxCall(value) {
 
-  var value = $("#search").val();
   var search = queryURL + "&q=" + value;
 
   $.ajax({

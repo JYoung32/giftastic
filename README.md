@@ -6,8 +6,8 @@ A dynamic web application, built using Javascript and JQuery, that populates the
 https://jyoung32.github.io/giftastic/
 ---
 ### Languages & Technologies Used    
--HTML 
--CSS
--API
--Javascript
--JQuery
+-HTML  
+-CSS  
+-API  
+-Javascript  
+-JQuery  

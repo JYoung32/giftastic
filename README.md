@@ -8,8 +8,8 @@ https://jyoung32.github.io/giftastic/
 <br>
 <h5>Languages & Technologies Used</h5>
 <hr>
-*HTML 
-*CSS
-*API
-*Javascript
-*JQuery
+* HTML 
+* CSS
+* API
+* Javascript
+* JQuery

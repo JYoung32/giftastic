@@ -59,30 +59,6 @@ ajaxCall = (value) => {
   });
 };
 
-$(document).on("click", ".gif-click", function(){
-  console.log("clicked");
-
-  var gif = $(this);
-
-  var img = gif.find("img");
-
-  var still = img.attr("data-still");
-  var animate = img.attr("data-animate");
-  var state = img.attr("data-state");
-
-  if(state === "still"){
-    img.attr({
-      src: animate,
-      "data-state": "animate"
-    });
-  }else{
-    img.attr({
-      src: still,
-      "data-state": "still"
-    });
-  }
-});
-
 //submit buttons function
 submit = (event) => {
   event.preventDefault();
@@ -104,9 +80,30 @@ renderButtons();
 
 //click functions
 $("#submit").on("click", (event) => { submit(event) });
+
 $(document).on("click", ".button-search",  function () {
-  var value = $(this).attr("data-name");
+  const value = $(this).attr("data-name");
 
   $("#gif-container").empty();
   ajaxCall(value);
+});
+
+$(document).on("click", ".gif-click", function(){
+  const gif = $(this);
+  const img = gif.find("img");
+  const still = img.attr("data-still");
+  const animate = img.attr("data-animate");
+  const state = img.attr("data-state");
+
+  (state === "still") ? (
+    img.attr({
+      src: animate,
+      "data-state": "animate"
+    })
+  ) : (
+    img.attr({
+      src: still,
+      "data-state": "still"
+    })
+  );
 });

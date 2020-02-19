@@ -5,111 +5,56 @@
 //make GIFs have a play and pause function by click event
 //append a new button if a new item is searched
 
-
-
 //make an array to store items to populate button containter
 //make a click event to fire off search in the input form and append the new search in a button to the button container
 //make a click event to display GIFs with the buttons in the button container
 
-
 //initial values and api key
-var buttons = ["dogs", "cats", "birds", "lizards"];
-var key = "KTMIjgy5hDhnLeBJkjhiTFLRBcNzo99s";
-var queryURL = "https://api.giphy.com/v1/gifs/search?&api_key=" + key + "&limit=10";
-
+const buttons = ["dogs", "cats", "birds", "lizards"];
+const key = "KTMIjgy5hDhnLeBJkjhiTFLRBcNzo99s";
+const queryURL = `https://api.giphy.com/v1/gifs/search?&api_key=${key}&limit=10`;
 
 //generating buttons
-function renderButtons() {
-
+renderButtons = () => {
   $(".gif-buttons").empty();
+  for (let i = 0; i < buttons.length; i++) {
+    const buttonName = buttons[i];
 
-  for (var i = 0; i < buttons.length; i++) {
-    var buttonName = buttons[i];
-
-    var button = $("<button>");
+    let button = $("<button>");
     button.addClass("btn btn-primary button-search m-2");
     button.attr("data-name", buttonName);
     button.text(buttonName);
 
     $(".gif-buttons").append(button);
-
-  }
+  };
 };
 
-renderButtons();
-
-//button click function
-$(document).on("click", ".button-search",  function () {
-  var value = $(this).attr("data-name");
-
-  console.log(value);
-  console.log("clicked");
-  console.log(this);
-
-  $("#gif-container").empty();
-  ajaxCall(value);
-});
-
-//submit click function
-$("#submit").on("click", function (event) {
-  event.preventDefault();
-
-  var value = $("#search").val();
-
-  if(buttons.includes(value)){
-    alert("You have already searched this");
-
-    ajaxCall(value);
-
-  }else{
-    buttons.push(value);
-
-  renderButtons();
-
-  $("#gif-container").empty();
-
-  ajaxCall(value);
-
-  console.log(value);
-  };
-})
-
 //ajax call function and display GIFs
-
-function ajaxCall(value) {
-
-  var search = queryURL + "&q=" + value;
-
+ajaxCall = (value) => {
+  const search = `${queryURL}&q=${value}`;
   $.ajax({
     url: search,
     method: "GET"
-  }).then(function (response) {
+  }).then((response) => {
+    const results = response.data;
+    for (let i = 0; i < results.length; i++) {
+      let giphyDiv = $("<div>");
+      let p = $("<p>");
+      p.text(`Rating: ${results[i].rating}`);
 
-    console.log("clicked");
-    console.log(queryURL);
-    console.log(response);
+      let giphyImg = $("<img>");
+      giphyImg.attr({
+        "src": results[i].images.original_still.url,
+        "data-still": results[i].images.original_still.url,
+        "data-animate": results[i].images.original.url,
+        "data-state": "still"
+      });
 
-    var results = response.data;
-    for (var i = 0; i < results.length; i++) {
+      giphyDiv.addClass("m-3 gif-click");
+      giphyDiv.append(p);
+      giphyDiv.append(giphyImg);
 
-      var animalDiv = $("<div>");
-
-      var p = $("<p>");
-
-      p.text("Rating: " + results[i].rating);
-
-      var animalImg = $("<img>");
-
-      animalImg.attr("src", results[i].images.original_still.url);
-      animalImg.attr("data-still", results[i].images.original_still.url);
-      animalImg.attr("data-animate", results[i].images.original.url);
-      animalImg.attr("data-state", "still");
-
-      animalDiv.addClass("m-3 gif-click");
-      animalDiv.append(p);
-      animalDiv.append(animalImg);
-
-      $("#gif-container").prepend(animalDiv);
+      $("#gif-container").prepend(giphyDiv);
     }
   });
 };
@@ -136,4 +81,32 @@ $(document).on("click", ".gif-click", function(){
       "data-state": "still"
     });
   }
+});
+
+//submit buttons function
+submit = (event) => {
+  event.preventDefault();
+  const value = $("#search").val();
+
+  (buttons.includes(value)) ? (
+    alert("You have already searched this"),
+    ajaxCall(value)
+  ) : (
+    buttons.push(value),
+    renderButtons(),
+    $("#gif-container").empty(),
+    ajaxCall(value)
+  );
+};
+
+//initialize buttons
+renderButtons();
+
+//click functions
+$("#submit").on("click", (event) => { submit(event) });
+$(document).on("click", ".button-search",  function () {
+  var value = $(this).attr("data-name");
+
+  $("#gif-container").empty();
+  ajaxCall(value);
 });

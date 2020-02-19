@@ -4,8 +4,12 @@ A dynamic web application, built using Javascript and JQuery, that populates the
 <br>
 <h3>Link to live site</h3>
 <hr>
-<a href="https://jyoung32.github.io/giftastic/">Deployed Site</a>
+https://jyoung32.github.io/giftastic/
 <br>
 <h5>Languages & Technologies Used</h5>
 <hr>
-HTML, CSS, API, Javascript, JQuery
+*HTML 
+*CSS
+*API
+*Javascript
+*JQuery
